@@ -18,7 +18,9 @@ const animateSnake=function() {
     drawFood(food);
   }
 }
-
+const stopGame=function(){
+  clearInterval(animator);
+}
 const changeSnakeDirection=function(event) {
   switch (event.code) {
     case "KeyA":
@@ -33,6 +35,17 @@ const changeSnakeDirection=function(event) {
     default:
   }
 }
+
+const checkSnakeTouchItself=function(){
+  let head=snake.head;
+  let body=snake.body;
+  for(i=0;i>body.length;i++){
+    if(head.isSameCoordAs(body[i])){
+      stopGame();
+    }
+  }
+}
+
 
 const addKeyListener=function() {
   let grid=document.getElementById("keys");
@@ -60,9 +73,10 @@ const startGame=function() {
   createFood(numberOfRows,numberOfCols);
   drawFood(food);
   addKeyListener();
+  checkSnakeTouchItself();
   animator=setInterval(animateSnake,140);
+  checkSnakeIsOut();
 }
-const stopGame=function(){
-  clearInterval(animator);
-}
+
+
 window.onload=startGame;
