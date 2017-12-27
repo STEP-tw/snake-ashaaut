@@ -36,6 +36,22 @@ const changeSnakeDirection=function(event) {
   }
 }
 
+
+let checkSnakeIsOut=function(){
+  if(snake.head.x == 100 && snake.head.direction == "east"){
+    stopGame();
+  }
+  if(snake.head.x==59 && snake.head.direction=="north"){
+    stopGame();
+  }
+  if(snake.head.x==80 &&  snake.head.direction=="south"){
+    stopGame();
+  }
+  if(snake.head.x==0 && snake.head.direction=="west"){
+    stopGame();
+  }
+}
+
 const checkSnakeTouchItself=function(){
   let head=snake.head;
   let body=snake.body;
