@@ -33,7 +33,7 @@ const changeSnakeDirection=function(event) {
     default:
   }
 }
-console.log(eveny.code);
+
 const addKeyListener=function() {
   let grid=document.getElementById("keys");
   grid.onkeyup=changeSnakeDirection;
@@ -46,7 +46,6 @@ const createSnake=function() {
   body.push(tail);
   body.push(tail.next());
   let head=tail.next().next();
-
   snake=new Snake(head,body);
 }
 
@@ -63,5 +62,7 @@ const startGame=function() {
   addKeyListener();
   animator=setInterval(animateSnake,140);
 }
-
+const stopGame=function(){
+  clearInterval(animator);
+}
 window.onload=startGame;
