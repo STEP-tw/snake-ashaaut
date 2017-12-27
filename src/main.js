@@ -33,7 +33,7 @@ const changeSnakeDirection=function(event) {
     default:
   }
 }
-
+console.log(eveny.code);
 const addKeyListener=function() {
   let grid=document.getElementById("keys");
   grid.onkeyup=changeSnakeDirection;
